@@ -4,17 +4,24 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
 } from "../constants";
-const initialState = {};
+
+const initialState = { users: [] };
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP_SUCCESS:
-      return {};
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+      };
     case SIGNUP_ERROR:
-      return {};
+      return state;
     case LOGIN_SUCCESS:
-      return {};
+      return state;
     case LOGIN_ERROR:
-      return {};
+      return state;
+    default:
+      return state;
   }
 };
 
