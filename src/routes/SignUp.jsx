@@ -1,15 +1,32 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { signUp } from "../actions";
 const SignUp = () => {
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
+  });
   const handleChange = (e) => {
-    setUser(...user, { [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const handleSignUp = async () => {};
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    await dispatch(signUp(user));
+    setUser({
+      name: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+    });
+  };
   return (
     <div>
       <h1>Sign Up!</h1>
-      <Form onSubmit={() => handleSignUp()}>
+      <Form onSubmit={(e) => handleSignUp(e)}>
         <Form.Group controlId="name">
           <Form.Label>Name: </Form.Label>
           <Form.Control

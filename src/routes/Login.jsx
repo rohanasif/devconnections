@@ -30,7 +30,6 @@ const Login = () => {
             onChange={(e) => handleChange(e)}
           />
         </Form.Group>
-
         <Button type="submit">Login in!</Button>
       </Form>
     </div>
