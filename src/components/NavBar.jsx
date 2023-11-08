@@ -1,24 +1,15 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import LoginBtn from "./LogoutBtn";
 import LogoutBtn from "./LoginBtn";
-import { getLoggedUser } from "../actions";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import SignupBtn from "./SignupBtn";
 import DevsBtn from "./DevsBtn";
 
 const NavBar = () => {
-  const [loggedin, setLoggedin] = useState(false);
-  const dispatch = useDispatch();
+  const loggedin = useSelector((state) => state.main.users);
 
-  useEffect(() => {
-    const checkLogin = async () => {
-      const user = await dispatch(getLoggedUser());
-      setLoggedin(user?.isLoggedin);
-    };
-    checkLogin();
-  }, []);
+  console.log(loggedin);
 
   return (
     <Navbar expand="lg" bg="dark">

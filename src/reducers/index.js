@@ -14,6 +14,7 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USERS:
       return { ...state, users: action.payload };
+
     case SIGNUP_SUCCESS:
       return {
         ...state,
