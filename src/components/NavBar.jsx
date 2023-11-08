@@ -6,6 +6,7 @@ import LogoutBtn from "./LoginBtn";
 import { getLoggedUser } from "../actions";
 import { useDispatch } from "react-redux";
 import SignupBtn from "./SignupBtn";
+import DevsBtn from "./DevsBtn";
 
 const NavBar = () => {
   const [loggedin, setLoggedin] = useState(false);
@@ -30,6 +31,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-light" />
         <Navbar.Collapse id="basic-navbar-nav" className="flex-grow-0">
           <Nav>
+            <DevsBtn />
             <SignupBtn />
             {loggedin ? <LoginBtn /> : <LogoutBtn />}
           </Nav>
