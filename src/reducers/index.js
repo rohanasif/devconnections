@@ -25,8 +25,17 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case LOGIN_SUCCESS:
+      console.log({
+        ...state,
+        users: state.users.map((user) =>
+          user.id === action.payload.id ? { ...user, isLoggedin: true } : user
+        ),
+      });
       return {
         ...state,
+        users: state.users.map((user) =>
+          user.id === action.payload.id ? { ...user, isLoggedin: true } : user
+        ),
       };
 
     case LOGIN_ERROR:

@@ -15,7 +15,7 @@ const SignUp = () => {
   };
   const handleSignUp = async (e) => {
     e.preventDefault();
-    await dispatch(signUp(user));
+    dispatch(signUp(user));
     setUser({
       name: "",
       email: "",

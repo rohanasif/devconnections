@@ -10,7 +10,7 @@ const Login = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    await dispatch(login(user));
+    dispatch(login(user));
   };
   return (
     <div className="d-flex flex-column justify-content-center align-items-center main-content">
