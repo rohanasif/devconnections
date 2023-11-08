@@ -3,9 +3,11 @@ import {
   SIGNUP_ERROR,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  LOGOUT_SUCCESS,
+  LOGOUT_ERROR,
 } from "../constants";
 
-const initialState = { users: [] };
+const initialState = { users: [], message: { text: "" } };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,13 +15,29 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         users: [...state.users, action.payload],
+        message: { text: "Registration successful" },
       };
+
     case SIGNUP_ERROR:
-      return state;
+      return {
+        ...state,
+        message: { text: action.payload },
+      };
+
     case LOGIN_SUCCESS:
-      return state;
+      return {
+        ...state,
+      };
+
     case LOGIN_ERROR:
       return state;
+
+    case LOGOUT_SUCCESS:
+      return state;
+
+    case LOGOUT_ERROR:
+      return state;
+
     default:
       return state;
   }
