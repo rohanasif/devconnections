@@ -20,6 +20,10 @@ const NavBar = () => {
     checkLogin();
   }, []);
 
+  useEffect(() => {
+    console.log(loggedin);
+  }, [loggedin]);
+
   return (
     <Navbar expand="lg" bg="dark">
       <Container>

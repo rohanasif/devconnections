@@ -6,7 +6,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({ email: "", password: "" });
   const handleChange = (e) => {
-    setUser(...user, { [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
   const handleLogin = async (e) => {
     e.preventDefault();

@@ -66,7 +66,6 @@ export const login = (user) => async (dispatch) => {
       const response = await axios.patch(`${USERSURL}/${userLoggingIn.id}`, {
         isLoggedin: true,
       });
-      console.log(response.data);
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
     } else {
       dispatch({
