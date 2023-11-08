@@ -8,9 +8,9 @@ const LogoutBtn = () => {
   const dispatch = useDispatch();
   const handleClick = async () => {
     try {
-      const loggedUser = dispatch(getLoggedUser());
+      const loggedUser = await dispatch(getLoggedUser());
       if (loggedUser) {
-        dispatch(logout(loggedUser));
+        await dispatch(logout(loggedUser));
         alert("You are logged out!");
         navigate("/login");
       } else {

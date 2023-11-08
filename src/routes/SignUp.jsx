@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { signUp } from "../actions";
+import { Link } from "react-router-dom";
 const SignUp = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -69,6 +70,9 @@ const SignUp = () => {
         </Form.Group>
         <Button type="submit">Sign up!</Button>
       </Form>
+      <p>
+        Already have an account? <Link to="/login">Login!</Link>
+      </p>
     </div>
   );
 };

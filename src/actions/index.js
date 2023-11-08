@@ -108,6 +108,7 @@ export const logout = (user) => async (dispatch) => {
       const response = await axios.patch(`${USERSURL}/${user.id}`, {
         isLoggedin: false,
       });
+
       dispatch({ type: LOGOUT_SUCCESS, payload: response.data });
     } else {
       dispatch({
