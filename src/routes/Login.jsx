@@ -1,15 +1,21 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { login } from "../actions";
 const Login = () => {
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({ email: "", password: "" });
   const handleChange = (e) => {
     setUser(...user, { [e.target.name]: e.target.value });
   };
-  const handleLogin = async () => {};
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    await dispatch(login(user));
+  };
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-center align-items-center main-content">
       <h1>Login</h1>
-      <Form onSubmit={() => handleLogin()}>
+      <Form onSubmit={(e) => handleLogin(e)}>
         <Form.Group controlId="email">
           <Form.Label>Email address: </Form.Label>
           <Form.Control
