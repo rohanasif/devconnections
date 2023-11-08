@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { login } from "../actions";
+import { Link } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({ email: "", password: "" });
@@ -38,6 +39,10 @@ const Login = () => {
         </Form.Group>
         <Button type="submit">Login in!</Button>
       </Form>
+      <p>
+        Don&apos;t have an account? <Link to="/signup">Sign up!</Link>
+      </p>
+      {}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import {
+  SET_USERS,
   SIGNUP_SUCCESS,
   SIGNUP_ERROR,
   LOGIN_SUCCESS,
@@ -11,6 +12,8 @@ const initialState = { users: [], message: { text: "" } };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_USERS:
+      return { ...state, users: action.payload };
     case SIGNUP_SUCCESS:
       return {
         ...state,
@@ -25,27 +28,34 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case LOGIN_SUCCESS:
-      console.log({
-        ...state,
-        users: state.users.map((user) =>
-          user.id === action.payload.id ? { ...user, isLoggedin: true } : user
-        ),
-      });
       return {
         ...state,
         users: state.users.map((user) =>
           user.id === action.payload.id ? { ...user, isLoggedin: true } : user
         ),
+        message: { text: "You are now logged in!" },
       };
 
     case LOGIN_ERROR:
-      return state;
+      return {
+        ...state,
+        message: { text: action.payload },
+      };
 
     case LOGOUT_SUCCESS:
-      return state;
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user.id === action.payload.id ? { ...user, isLoggedin: false } : user
+        ),
+        message: { text: "You are now logged out!" },
+      };
 
     case LOGOUT_ERROR:
-      return state;
+      return {
+        ...state,
+        message: { text: action.payload },
+      };
 
     default:
       return state;

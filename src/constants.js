@@ -1,4 +1,5 @@
 export const USERSURL = "http://localhost:3000/users";
+export const SET_USERS = "SET_USERS";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";

@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   USERSURL,
+  SET_USERS,
   SIGNUP_ERROR,
   SIGNUP_SUCCESS,
   LOGIN_ERROR,
@@ -19,11 +20,23 @@ export const getUsers = () => async () => {
   }
 };
 
-export const getUser = () => async (userId) => {
+export const getUser = (userId) => async () => {
   try {
     const response = await axios.get(`${USERSURL}/${userId}`);
     const user = response.data;
     return user;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const setUsers = () => async (dispatch) => {
+  try {
+    const response = await axios.get(USERSURL);
+    dispatch({
+      type: SET_USERS,
+      payload: response.data,
+    });
   } catch (e) {
     console.error(e);
   }
