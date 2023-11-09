@@ -5,7 +5,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOGOUT_SUCCESS,
-  LOGOUT_ERROR,
 } from "../constants";
 
 const initialState = { users: [], message: { text: "" } };
@@ -50,12 +49,6 @@ const rootReducer = (state = initialState, action) => {
           user.id === action.payload.id ? { ...user, isLoggedin: false } : user
         ),
         message: { text: "You are now logged out!" },
-      };
-
-    case LOGOUT_ERROR:
-      return {
-        ...state,
-        message: { text: action.payload },
       };
 
     default:

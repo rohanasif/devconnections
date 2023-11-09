@@ -16,7 +16,10 @@ const NavBar = () => {
     <Navbar expand="lg" bg="dark">
       <Container>
         <Navbar.Brand>
-          <Link to="/" className="text-decoration-none text-light">
+          <Link
+            to="/devconnections"
+            className="text-decoration-none text-light"
+          >
             DevConnections
           </Link>
         </Navbar.Brand>

@@ -7,7 +7,6 @@ import {
   LOGIN_ERROR,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
-  LOGOUT_ERROR,
 } from "../constants";
 
 export const getUsers = () => async () => {
@@ -104,18 +103,11 @@ export const getLoggedUser = () => async () => {
 
 export const logout = (user) => async (dispatch) => {
   try {
-    if (user.isLoggedin) {
-      const response = await axios.patch(`${USERSURL}/${user.id}`, {
-        isLoggedin: false,
-      });
+    const response = await axios.patch(`${USERSURL}/${user.id}`, {
+      isLoggedin: false,
+    });
 
-      dispatch({ type: LOGOUT_SUCCESS, payload: response.data });
-    } else {
-      dispatch({
-        type: LOGOUT_ERROR,
-        payload: "User not logged in! Please refresh!",
-      });
-    }
+    dispatch({ type: LOGOUT_SUCCESS, payload: response.data });
   } catch (e) {
     console.error(e);
   }

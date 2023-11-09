@@ -7,8 +7,10 @@ const SignupBtn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClick = async () => {
-    const loggedinUser = !!(await dispatch(getLoggedUser()));
-    await dispatch(logout(loggedinUser));
+    const loggedinUser = await dispatch(getLoggedUser());
+    if (loggedinUser) {
+      await dispatch(logout(loggedinUser));
+    }
     navigate("/devconnections/signup");
   };
 

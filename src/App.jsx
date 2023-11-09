@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <div>
+      <div className="d-flex flex-column align-items-center">
         <Routes>
           <Route path="/devconnections" element={<Home />} />
           <Route path="/devconnections/signup" element={<SignUp />} />
