@@ -1,9 +1,14 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getLoggedUser, logout } from "../actions";
 
 const LoginBtn = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClick = async () => {
+    const loggedinUser = !!(await dispatch(getLoggedUser()));
+    await dispatch(logout(loggedinUser));
     navigate("/devconnections/login");
   };
 

@@ -5,10 +5,11 @@ import Login from "./routes/Login";
 import NavBar from "./components/NavBar";
 import Developers from "./routes/Developers";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "./actions";
 
 const App = () => {
+  const messageText = useSelector((state) => state.main.message.text);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setUsers());
@@ -17,12 +18,15 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <Routes>
-        <Route path="/devconnections" element={<Home />} />
-        <Route path="/devconnections/signup" element={<SignUp />} />
-        <Route path="/devconnections/login" element={<Login />} />
-        <Route path="/devconnections/devs" element={<Developers />} />
-      </Routes>
+      <div>
+        <Routes>
+          <Route path="/devconnections" element={<Home />} />
+          <Route path="/devconnections/signup" element={<SignUp />} />
+          <Route path="/devconnections/login" element={<Login />} />
+          <Route path="/devconnections/devs" element={<Developers />} />
+        </Routes>
+        {messageText ? <p className="text-danger">{messageText}</p> : null}
+      </div>
     </div>
   );
 };

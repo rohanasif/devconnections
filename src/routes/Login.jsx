@@ -14,7 +14,7 @@ const Login = () => {
     dispatch(login(user));
   };
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center main-content">
+    <div className="d-flex flex-column justify-content-center align-items-center">
       <h1>Login</h1>
       <Form onSubmit={(e) => handleLogin(e)}>
         <Form.Group controlId="email">

@@ -25,7 +25,7 @@ const SignUp = () => {
     });
   };
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center main-content">
+    <div className="d-flex flex-column justify-content-center align-items-center">
       <h1>Sign Up!</h1>
       <Form onSubmit={(e) => handleSignUp(e)}>
         <Form.Group controlId="name">

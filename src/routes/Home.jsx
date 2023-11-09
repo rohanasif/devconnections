@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center main-content">
+    <div className="d-flex flex-column justify-content-center align-items-center">
       <h1>DevConnections</h1>
       <p>
         Create developer profile/portfolio, share posts and interact with other
