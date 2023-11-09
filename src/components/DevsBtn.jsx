@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const DevsBtn = () => {
   const navigate = useNavigate();
   const handleClick = async () => {
-    navigate("/devs");
+    navigate("/devconnection/devs");
   };
 
   return (

@@ -7,9 +7,10 @@ import SignupBtn from "./SignupBtn";
 import DevsBtn from "./DevsBtn";
 
 const NavBar = () => {
-  const loggedin = useSelector((state) => state.main.users);
-
-  console.log(loggedin);
+  const selectedState = useSelector((state) =>
+    state.main.users.find((user) => user.isLoggedin)
+  );
+  const loggedin = !!selectedState;
 
   return (
     <Navbar expand="lg" bg="dark">

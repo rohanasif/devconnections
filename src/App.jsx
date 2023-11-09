@@ -13,14 +13,15 @@ const App = () => {
   useEffect(() => {
     dispatch(setUsers());
   }, []);
+
   return (
     <div>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/devs" element={<Developers />} />
+        <Route path="/devconnections" element={<Home />} />
+        <Route path="/devconnections/signup" element={<SignUp />} />
+        <Route path="/devconnections/login" element={<Login />} />
+        <Route path="/devconnections/devs" element={<Developers />} />
       </Routes>
     </div>
   );

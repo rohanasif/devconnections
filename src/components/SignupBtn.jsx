@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SignupBtn = () => {
   const navigate = useNavigate();
   const handleClick = async () => {
-    navigate("/signup");
+    navigate("/devconnections/signup");
   };
 
   return (

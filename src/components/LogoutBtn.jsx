@@ -12,7 +12,7 @@ const LogoutBtn = () => {
       if (loggedUser) {
         await dispatch(logout(loggedUser));
         alert("You are logged out!");
-        navigate("/login");
+        navigate("/devconnections/login");
       } else {
         alert("No user is currently logged in.");
       }
