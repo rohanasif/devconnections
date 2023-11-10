@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions";
 import { Link } from "react-router-dom";
 const Login = () => {
@@ -13,6 +13,7 @@ const Login = () => {
     e.preventDefault();
     dispatch(login(user));
   };
+  const messageText = useSelector((state) => state.main.message.text);
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <h1>Login</h1>
@@ -40,9 +41,10 @@ const Login = () => {
         <Button type="submit">Login in!</Button>
       </Form>
       <p>
-        Don&apos;t have an account? <Link to="/devconnections/signup">Sign up!</Link>
+        Don&apos;t have an account?{" "}
+        <Link to="/devconnections/signup">Sign up!</Link>
       </p>
-      {}
+      {messageText ? <p className="text-danger">{messageText}</p> : null}
     </div>
   );
 };

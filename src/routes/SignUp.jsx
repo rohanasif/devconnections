@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../actions";
 import { Link } from "react-router-dom";
 const SignUp = () => {
+  const messageText = useSelector((state) => state.main.message.text);
   const dispatch = useDispatch();
   const [user, setUser] = useState({
     name: "",
@@ -73,6 +74,7 @@ const SignUp = () => {
       <p>
         Already have an account? <Link to="/devconnections/login">Login!</Link>
       </p>
+      {messageText ? <p className="text-danger">{messageText}</p> : null}
     </div>
   );
 };

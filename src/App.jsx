@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "./actions";
 
 const App = () => {
-  const messageText = useSelector((state) => state.main.message.text);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setUsers());
@@ -25,7 +24,6 @@ const App = () => {
           <Route path="/devconnections/login" element={<Login />} />
           <Route path="/devconnections/devs" element={<Developers />} />
         </Routes>
-        {messageText ? <p className="text-danger">{messageText}</p> : null}
       </div>
     </div>
   );

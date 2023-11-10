@@ -69,16 +69,18 @@ export const login = (user) => async (dispatch) => {
         u.password === user.password &&
         (u.name === user.name || u.email === user.email)
     );
-    if (user.isLoggedin) {
+    const alreadyLoggedin = await dispatch(getLoggedUser());
+    if (alreadyLoggedin || user.isLoggedin) {
       dispatch({
         type: LOGIN_ERROR,
-        payload: `${user.name} is already logged in! Go to <Link to={"/"}>Home</Link>`,
+        payload: `${user.name} is already logged in! Go to <Link to={"/devconnections/"}>Home</Link>`,
       });
     } else if (userLoggingIn) {
       const response = await axios.patch(`${USERSURL}/${userLoggingIn.id}`, {
         isLoggedin: true,
       });
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+      alert("You are now logged in!");
     } else {
       dispatch({
         type: LOGIN_ERROR,
