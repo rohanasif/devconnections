@@ -10,6 +10,7 @@ import Profile from "./routes/Profile";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUsers } from "./actions";
+import Dashboard from "./routes/Dashboard";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/devconnections/edit" element={<Edit />} />
           <Route path="/devconnections/create" element={<Create />} />
           <Route path="/devconnections/profile/:id" element={<Profile />} />
+          <Route path="/devconnections/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </div>

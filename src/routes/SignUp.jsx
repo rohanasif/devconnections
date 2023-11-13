@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../actions";
-import { Link } from "react-router-dom";
+import { getLoggedUser, login, signUp } from "../actions";
+import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
   const messageText = useSelector((state) => state.main.message.text);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -24,7 +25,20 @@ const SignUp = () => {
       password: "",
       repeatPassword: "",
     });
+    dispatch(login(user));
   };
+
+  useEffect(() => {
+    const fetchLoggedUser = async () => {
+      const user = await dispatch(getLoggedUser());
+      if (user) {
+        navigate("/devconnections/create");
+      }
+    };
+
+    fetchLoggedUser();
+  }, [user]);
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <h1>Sign Up!</h1>
@@ -70,6 +84,7 @@ const SignUp = () => {
           />
         </Form.Group>
         <Button type="submit">Sign up!</Button>
+        {}
       </Form>
       <p>
         Already have an account? <Link to="/devconnections/login">Login!</Link>

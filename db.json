@@ -4,8 +4,7 @@
       "name": "r",
       "email": "r@y.com",
       "password": "1",
-      "id": 1,
-      "isLoggedin": true
+      "id": 1
     }
   ],
   "message": {

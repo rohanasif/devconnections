@@ -8,6 +8,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
 } from "../constants";
+import { Link } from "react-router-dom";
 
 export const getUsers = () => async () => {
   try {
@@ -53,6 +54,8 @@ export const signUp = (user) => async (dispatch) => {
     ) {
       const response = await axios.post(USERSURL, userToRegister);
       dispatch({ type: SIGNUP_SUCCESS, payload: response.data });
+      dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+      alert("You are now logged in!");
     } else {
       dispatch({ type: SIGNUP_ERROR, payload: "User already registered!" });
     }
@@ -73,7 +76,9 @@ export const login = (user) => async (dispatch) => {
     if (alreadyLoggedin || user.isLoggedin) {
       dispatch({
         type: LOGIN_ERROR,
-        payload: `${user.name} is already logged in! Go to <Link to={"/devconnections/"}>Home</Link>`,
+        payload: `${user.name} is already logged in! Go to (
+          <Link to={"/devconnections/"}>Home</Link>
+        )`,
       });
     } else if (userLoggingIn) {
       const response = await axios.patch(`${USERSURL}/${userLoggingIn.id}`, {
