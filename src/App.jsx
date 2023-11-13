@@ -5,6 +5,7 @@ import Login from "./routes/Login";
 import NavBar from "./components/NavBar";
 import Developers from "./routes/Developers";
 import Edit from "./routes/Edit";
+import Create from "./routes/Create";
 import Profile from "./routes/Profile";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/devconnections/login" element={<Login />} />
           <Route path="/devconnections/devs" element={<Developers />} />
           <Route path="/devconnections/edit" element={<Edit />} />
+          <Route path="/devconnections/create" element={<Create />} />
           <Route path="/devconnections/profile/:id" element={<Profile />} />
         </Routes>
       </div>
