@@ -5,6 +5,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOGOUT_SUCCESS,
+  CREATE_PROFILE,
 } from "../constants";
 
 const initialState = { users: [], message: { text: "" } };
@@ -49,6 +50,21 @@ const rootReducer = (state = initialState, action) => {
           user.id === action.payload.id ? { ...user, isLoggedin: false } : user
         ),
         message: { text: "You are now logged out!" },
+      };
+
+    case CREATE_PROFILE:
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.id === action.payload.id) {
+            return {
+              ...user,
+              ...action.payload,
+            };
+          }
+          return user;
+        }),
+        message: { text: "Profile created successfully" },
       };
 
     default:

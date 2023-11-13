@@ -7,8 +7,8 @@ import {
   LOGIN_ERROR,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
+  CREATE_PROFILE,
 } from "../constants";
-import { Link } from "react-router-dom";
 
 export const getUsers = () => async () => {
   try {
@@ -115,6 +115,16 @@ export const logout = (user) => async (dispatch) => {
     });
 
     dispatch({ type: LOGOUT_SUCCESS, payload: response.data });
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const createProfile = (user, userDetails) => async (dispatch) => {
+  try {
+    console.log("user: ", user, "details: ", userDetails);
+    const response = await axios.patch(`${USERSURL}/${user.id}`, userDetails);
+    dispatch({ type: CREATE_PROFILE, payload: response.data });
   } catch (e) {
     console.error(e);
   }

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { createProfile, getLoggedUser } from "../actions";
+import { useNavigate } from "react-router-dom";
 const Create = () => {
   const [profession, setProfession] = useState("");
   const [company, setCompany] = useState("");
@@ -7,8 +10,24 @@ const Create = () => {
   const [skills, setSkills] = useState("");
   const [github, setGithub] = useState("");
   const [bio, setBio] = useState("");
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const loggedUser = await dispatch(getLoggedUser());
+    const userId = loggedUser.id;
+    dispatch(
+      createProfile(loggedUser, {
+        profession,
+        company,
+        website,
+        skills,
+        github,
+        bio,
+      })
+    );
+    alert("Profile created!");
+    navigate(`/devconnections/profile)${userId}`);
   };
   return (
     <div>
@@ -19,6 +38,7 @@ const Create = () => {
             aria-label="Default select example"
             value={profession}
             onChange={(e) => setProfession(e.target.value)}
+            id="profession"
           >
             <option>Select Professional Status</option>
             <option value="Developer">Developer</option>
@@ -65,7 +85,7 @@ const Create = () => {
               onChange={(e) => setGithub(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="company">
+          <Form.Group controlId="bio">
             <Form.Control
               as="textarea"
               type="text"
