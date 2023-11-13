@@ -19,13 +19,14 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     dispatch(signUp(user));
+    const { name, repeatPassword, ...userToLogin } = user;
+    dispatch(login(userToLogin));
     setUser({
       name: "",
       email: "",
       password: "",
       repeatPassword: "",
     });
-    dispatch(login(user));
   };
 
   useEffect(() => {
