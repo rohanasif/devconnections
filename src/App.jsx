@@ -4,8 +4,10 @@ import SignUp from "./routes/SignUp";
 import Login from "./routes/Login";
 import NavBar from "./components/NavBar";
 import Developers from "./routes/Developers";
+import Edit from "./routes/Edit";
+import Profile from "./routes/Profile";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUsers } from "./actions";
 
 const App = () => {
@@ -23,6 +25,8 @@ const App = () => {
           <Route path="/devconnections/signup" element={<SignUp />} />
           <Route path="/devconnections/login" element={<Login />} />
           <Route path="/devconnections/devs" element={<Developers />} />
+          <Route path="/devconnections/edit" element={<Edit />} />
+          <Route path="/devconnections/profile/:id" element={<Profile />} />
         </Routes>
       </div>
     </div>
