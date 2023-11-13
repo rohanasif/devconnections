@@ -18,9 +18,11 @@ const SignUp = () => {
   };
   const handleSignUp = async (e) => {
     e.preventDefault();
-    dispatch(signUp(user));
-    const { name, repeatPassword, ...userToLogin } = user;
-    dispatch(login(userToLogin));
+    const signUpSuccess = dispatch(signUp(user));
+    if (signUpSuccess) {
+      const { name, repeatPassword, ...userToLogin } = user;
+      dispatch(login(userToLogin));
+    }
     setUser({
       name: "",
       email: "",
@@ -39,7 +41,7 @@ const SignUp = () => {
     };
 
     fetchLoggedUser();
-  }, [user]);
+  }, [messageText]);
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
