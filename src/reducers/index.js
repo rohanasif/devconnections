@@ -6,6 +6,7 @@ import {
   LOGIN_ERROR,
   LOGOUT_SUCCESS,
   CREATE_PROFILE,
+  EDIT_PROFILE,
 } from "../constants";
 
 const initialState = { users: [], message: { text: "" } };
@@ -65,6 +66,21 @@ const rootReducer = (state = initialState, action) => {
           return user;
         }),
         message: { text: "Profile created successfully" },
+      };
+
+    case EDIT_PROFILE:
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.id === action.payload.id) {
+            return {
+              ...user,
+              ...action.payload,
+            };
+          }
+          return user;
+        }),
+        message: { text: "Profile updated successfully" },
       };
 
     default:

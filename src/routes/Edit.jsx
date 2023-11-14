@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
+import { getLoggedUser } from "../actions";
 const Edit = () => {
-  const loggedUser = useSelector((state) =>
-    state.main.users.find((user) => user.isLoggedin)
-  );
   const [profession, setProfession] = useState(loggedUser.profession);
   const [company, setCompany] = useState(loggedUser.company);
   const [website, setWebsite] = useState(loggedUser.website);
@@ -12,8 +10,19 @@ const Edit = () => {
   const [github, setGithub] = useState(loggedUser.github);
   const [bio, setBio] = useState(loggedUser.bio);
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const loggedUser = await dispatch(getLoggedUser());
+    dispatch(
+      editProfile(loggedUser, {
+        profession,
+        company,
+        website,
+        skills,
+        github,
+        bio,
+      })
+    );
   };
   return (
     <div>

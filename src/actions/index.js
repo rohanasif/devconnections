@@ -8,6 +8,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   CREATE_PROFILE,
+  EDIT_PROFILE,
 } from "../constants";
 
 export const getUsers = () => async () => {
@@ -114,9 +115,17 @@ export const logout = (user) => async (dispatch) => {
 
 export const createProfile = (user, userDetails) => async (dispatch) => {
   try {
-    console.log("user: ", user, "details: ", userDetails);
     const response = await axios.patch(`${USERSURL}/${user.id}`, userDetails);
     dispatch({ type: CREATE_PROFILE, payload: response.data });
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const editProfile = (user, userDetails) => async (dispatch) => {
+  try {
+    const response = await axios.patch(`${USERSURL}/${user.id}`, userDetails);
+    dispatch({ type: EDIT_PROFILE, payload: response.data });
   } catch (e) {
     console.error(e);
   }
