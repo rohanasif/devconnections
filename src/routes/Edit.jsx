@@ -29,7 +29,6 @@ const Edit = () => {
         bio,
       })
     );
-    alert("Profile created!");
     navigate(`/devconnections/profile/${userId}`);
   };
   useEffect(() => {}, []);
