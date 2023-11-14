@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
-import { getLoggedUser } from "../actions";
+import { getLoggedUser, editProfile } from "../actions";
 const Edit = () => {
   const [profession, setProfession] = useState(loggedUser.profession);
   const [company, setCompany] = useState(loggedUser.company);
