@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import { getLoggedUser, editProfile } from "../actions";
+import { useNavigate } from "react-router-dom";
 const Edit = () => {
   const loggedUser = useSelector((state) =>
     state.main.users.find((user) => user.isLoggedin)
@@ -12,10 +13,12 @@ const Edit = () => {
   const [skills, setSkills] = useState(loggedUser.skills);
   const [github, setGithub] = useState(loggedUser.github);
   const [bio, setBio] = useState(loggedUser.bio);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const loggedUser = await dispatch(getLoggedUser());
+    const userId = loggedUser.id;
     dispatch(
       editProfile(loggedUser, {
         profession,
@@ -26,7 +29,10 @@ const Edit = () => {
         bio,
       })
     );
+    alert("Profile created!");
+    navigate(`/devconnections/profile/${userId}`);
   };
+  useEffect(() => {}, []);
   return (
     <div>
       <h1>Edit your profile</h1>

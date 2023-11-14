@@ -27,7 +27,7 @@ const Create = () => {
       })
     );
     alert("Profile created!");
-    navigate(`/devconnections/profile)${userId}`);
+    navigate(`/devconnections/profile/${userId}`);
   };
   return (
     <div>
