@@ -2,11 +2,13 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Profile = () => {
   const { id } = useParams();
-  const user = useSelector((state) => state.users?.filter(user.id === id));
-
+  useEffect(() => {});
+  const user = useSelector((state) => state.users.find(user.id === id));
+  console.log(user);
   return (
     <div className="d-flex align-items-center justify-content-center">
       <Card style={{ width: "300px" }}>
