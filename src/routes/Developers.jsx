@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Developers = () => {
   const users = useSelector((state) => state.main.users);
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex flex-column">
       <h1>Developers</h1>
       {users.map((user, i) => {
         return (
@@ -16,8 +16,8 @@ const Developers = () => {
               <Card.Text>{user.location}</Card.Text>
               <Card.Text>{user.github}</Card.Text>
               <Card.Text>
-                {user.skills?.map((skill, i) => {
-                  <li key={i}>{skill}</li>;
+                {user.skills.split(",").map((skill, i) => {
+                  return <li key={i}>{skill}</li>;
                 })}
               </Card.Text>
               <Link to={`/devconnections/profile/${user.id}`}>

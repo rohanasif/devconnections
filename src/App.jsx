@@ -23,14 +23,14 @@ const App = () => {
       <NavBar />
       <div className="d-flex flex-column align-items-center">
         <Routes>
-          <Route path="/devconnections" element={<Home />} />
-          <Route path="/devconnections/signup" element={<SignUp />} />
-          <Route path="/devconnections/login" element={<Login />} />
+          <Route path="/devconnections/create" element={<Create />} />
+          <Route path="/devconnections/dashboard" element={<Dashboard />} />
           <Route path="/devconnections/devs" element={<Developers />} />
           <Route path="/devconnections/edit" element={<Edit />} />
-          <Route path="/devconnections/create" element={<Create />} />
+          <Route path="/devconnections" element={<Home />} />
+          <Route path="/devconnections/login" element={<Login />} />
           <Route path="/devconnections/profile/:id" element={<Profile />} />
-          <Route path="/devconnections/dashboard" element={<Dashboard />} />
+          <Route path="/devconnections/signup" element={<SignUp />} />
         </Routes>
       </div>
     </div>

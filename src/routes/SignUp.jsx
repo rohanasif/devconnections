@@ -34,7 +34,6 @@ const SignUp = () => {
   useEffect(() => {
     const fetchLoggedUser = async () => {
       const user = await dispatch(getLoggedUser());
-      console.log(user);
       if (user) {
         navigate("/devconnections/create");
       }
